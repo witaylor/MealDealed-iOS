@@ -44,16 +44,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func collect() {
-        let vc = CollectOrderViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
     func collect(order: Order) {
         let vc = CollectOrderViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
-    
 }

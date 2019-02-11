@@ -15,11 +15,10 @@ class HomeViewController: UIViewController, Storyboarded {
     @IBOutlet var collectOrderButton: RoundedButton!
     @IBOutlet var reorderButton: RoundedButton!
     
+    // Recent Order Views
     @IBOutlet var noRecentOrderLabel: UILabel!
-    
     @IBOutlet var recentOrderStackView: UIStackView!
-    
-    
+
     @IBOutlet var mainView: UIView!
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var mainLabel: UILabel!
@@ -32,7 +31,7 @@ class HomeViewController: UIViewController, Storyboarded {
     @IBOutlet var drinkImageView: UIImageView!
     @IBOutlet var drinkLabel: UILabel!
     
-    private var previousOrder: Order?
+    private var previousOrder: Order? // nil if user doesn't have a recent order
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,22 +43,31 @@ class HomeViewController: UIViewController, Storyboarded {
         if let prevOrder = coordinator?.orderManager.getLastOrder(), prevOrder.isFull() {
             self.previousOrder = prevOrder
             
-            enableButton(collectOrderButton)
-            enableButton(reorderButton)
-            
-            noRecentOrderLabel.isHidden = true
-            recentOrderStackView.isHidden = false
-            
-            mainLabel.text  = prevOrder.getItem(inCatagory: .Main)?.name  ?? "error"
-            snackLabel.text = prevOrder.getItem(inCatagory: .Snack)?.name ?? "error"
-            drinkLabel.text = prevOrder.getItem(inCatagory: .Drink)?.name ?? "error"
+            setPreviousOrderViews()
+            setMealLabels(order: prevOrder)
         }
+    }
+    
+    private func setPreviousOrderViews() {
+        enableButton(collectOrderButton)
+        enableButton(reorderButton)
+        
+        noRecentOrderLabel.isHidden = true    // hide label
+        recentOrderStackView.isHidden = false // and show stack view
+    }
+    
+    private func setMealLabels(order: Order) {
+        mainLabel.text  = order.getItem(inCatagory: .Main)?.name  ?? "error"
+        snackLabel.text = order.getItem(inCatagory: .Snack)?.name ?? "error"
+        drinkLabel.text = order.getItem(inCatagory: .Drink)?.name ?? "error"
     }
     
     private func enableButton(_ button: UIButton) {
         button.isEnabled = true
         button.alpha = 1
     }
+    
+    // MARK: - @IBActions
     
     @IBAction func newOrderButton_touchUpInside(_ sender: Any) {
         self.coordinator?.startNewOrder()
@@ -70,6 +78,4 @@ class HomeViewController: UIViewController, Storyboarded {
             coordinator?.collect(order: order)
         }
     }
-    
-    
 }

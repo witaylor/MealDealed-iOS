@@ -43,9 +43,11 @@ class CheckoutViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func orderButton_touchUpInside(_ sender: Any) {
+        let newOrder = Order(forCustomer: (coordinator?.userManager.getCurrentUser())!, withMealDeal: mealDeal)
+        
         let alert = createErrorAlert(title: "Order Placed!", message: "Your order has been placed successfully.")
         alert.addAction(UIAlertAction(title: "Collect Now", style: .default, handler: { (action) in
-            self.coordinator?.collect()
+            self.coordinator?.collect(order: newOrder)
         }))
         present(alert, animated: true, completion: nil)
     }

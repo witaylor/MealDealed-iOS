@@ -17,9 +17,10 @@ extension UIViewController {
     
     func createErrorAlert(title: String, message: String) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Return", style: .cancel)
         
+        let cancelAction = UIAlertAction(title: "Return", style: .cancel)
         alert.addAction(cancelAction)
+        
         return alert
     }
     

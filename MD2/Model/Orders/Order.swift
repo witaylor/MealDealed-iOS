@@ -31,6 +31,11 @@ struct Order {
         self.customer = customer
     }
     
+    init(forCustomer customer: User, withMealDeal mealDeal: MealDeal) {
+        self.customer = customer
+        self.mealDeal = mealDeal
+    }
+    
     mutating func addToOrder(item: FoodItem) {
         if item.catagory == .Main  { self.mealDeal.main  = item }
         if item.catagory == .Snack { self.mealDeal.snack = item }
