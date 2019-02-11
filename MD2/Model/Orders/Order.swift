@@ -14,12 +14,11 @@ struct MealDeal {
     var drink: FoodItem?
     
     func isFull() -> Bool {
-        return ( (main != nil) && (snack != nil) && (drink != nil) )
+        return ((main != nil) && (snack != nil) && (drink != nil))
     }
 }
 
 struct Order {
-    
     private var mealDeal: MealDeal = MealDeal()
     
     private var dateOrdered = Date()

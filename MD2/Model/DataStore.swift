@@ -35,7 +35,6 @@ class DataStore {
         }
     }
     
-    
     // MARK: - Loading Data
     
     func load() -> [FoodItem] {
@@ -66,7 +65,4 @@ class DataStore {
         }
         return [DataItem]()
     }
-    
-    
-    
 }

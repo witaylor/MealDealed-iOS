@@ -24,7 +24,6 @@ class NewOrderViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         itemCollectionView.dataSource = self.dataController
         itemCollectionView.delegate   = self.dataController
         
@@ -51,10 +50,12 @@ class NewOrderViewController: UIViewController, Storyboarded {
     
     @IBAction func checkoutButton_touchUpInside(_ sender: Any) {
         let mealDeal = DataManager.shared.getCurrentOrder()
+        
         if mealDeal.isFull() { // has main, snack & drink
             self.coordinator?.checkout(withMeal: mealDeal)
         } else {
-            showErrorAlert(title: "Something's Missing!", message: "You must select a main, snack and a drink before going to checkout.")
+            let errorMessage = "You must select a main, snack and a drink before going to checkout."
+            showErrorAlert(title: "Something's Missing!", message: errorMessage)
         }
         
     }

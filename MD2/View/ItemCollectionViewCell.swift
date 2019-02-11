@@ -32,11 +32,9 @@ class ItemCollectionViewCell: UICollectionViewCell {
     private func setupCell() {
         self.heightAnchor.constraint(equalToConstant: 175)
         
-        // Item Image
         self.addSubview(itemImageView)
         setupImageView()
         
-        // Item Label
         self.addSubview(itemLabel)
         setupLabel()
     }
@@ -48,7 +46,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
         if item.catagory == .Snack { itemImageView.image = UIImage(named: "Snack") }
         if item.catagory == .Drink { itemImageView.image = UIImage(named: "Drink") }
     }
-    
     
     // MARK: - Item ImageView
     
@@ -67,7 +64,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
         itemImageView.widthAnchor.constraint(equalToConstant: (self.frame.width - 4)).isActive = true
         itemImageView.heightAnchor.constraint(equalTo: itemImageView.widthAnchor).isActive = true
     }
-    
     
     // MARK: - Item Label
     

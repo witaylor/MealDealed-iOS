@@ -19,5 +19,4 @@ struct User {
         self.uniUsername = uniUsername
         self.id = UUID()
     }
-    
 }

@@ -38,7 +38,7 @@ struct DataItem: Codable {
     func toFoodItem() -> FoodItem {
         var mainCatagory: FoodCatagory = .Main
         
-        if catagory == FoodCatagory.Main.rawValue  { mainCatagory = .Main }
+        if catagory == FoodCatagory.Main.rawValue  { mainCatagory = .Main  }
         if catagory == FoodCatagory.Snack.rawValue { mainCatagory = .Snack }
         if catagory == FoodCatagory.Drink.rawValue { mainCatagory = .Drink }
         

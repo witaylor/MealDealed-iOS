@@ -12,21 +12,9 @@ class ItemPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     // MARK: - CollectionView DataSources
     
-    var mainSelectionDataSource: ItemSelectionCollectionViewDataSource = {
-        let itemSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Main)
-        return itemSelectionDataSource
-    }()
-    
-    var snackSelectionDataSource: ItemSelectionCollectionViewDataSource = {
-        let itemSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Snack)
-        return itemSelectionDataSource
-    }()
-    
-    var drinkSelectionDataSource: ItemSelectionCollectionViewDataSource = {
-        let itemSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Drink)
-        return itemSelectionDataSource
-    }()
-    
+    var mainSelectionDataSource  = ItemSelectionCollectionViewDataSource(forCatagory: .Main)
+    var snackSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Snack)
+    var drinkSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Drink)
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3 // mains, snack, drink
@@ -54,13 +42,13 @@ class ItemPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     private func setupItemCollectionView(forCell cell: UIView, dataSource: ItemSelectionCollectionViewDataSource) -> UICollectionView {
         let layout = setupCollectionViewLayout()
         
-        let itemCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height), collectionViewLayout: layout   )
+        let itemCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height), collectionViewLayout: layout)
         itemCollectionView.register(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
         
         itemCollectionView.dataSource = dataSource
         itemCollectionView.delegate   = dataSource
         
-        itemCollectionView.backgroundColor = .clear
+        itemCollectionView.backgroundColor         = .clear
         itemCollectionView.allowsMultipleSelection = false
         
         return itemCollectionView
@@ -71,7 +59,6 @@ class ItemPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return layout
     }
-    
 }
 
 extension ItemPageCollectionViewDataSource: UICollectionViewDelegate { }
@@ -80,5 +67,4 @@ extension ItemPageCollectionViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
-    
 }
