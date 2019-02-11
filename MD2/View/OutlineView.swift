@@ -16,15 +16,23 @@ class OutlineView: UIView {
             setOutline()
         }
     }
+    
+    @IBInspectable
+    var cornerRadius: CGFloat = 0 {
+        didSet {
+            setCornerRadius()
+        }
+    }
 
     
     private func setOutline() {
         backgroundColor = .clear
-        
-        
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = outline ? 1 : 0
-        
+    }
+    
+    private func setCornerRadius() {
+        self.layer.cornerRadius = cornerRadius
     }
     
 }

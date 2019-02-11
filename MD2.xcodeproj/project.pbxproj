@@ -10,7 +10,7 @@
 		FD279E8622089D7E00AFC8B8 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD279E8422089D7E00AFC8B8 /* ItemCollectionViewCell.swift */; };
 		FD36D1C52207A3D200848B2B /* ItemPageCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36D1C42207A3D200848B2B /* ItemPageCollectionViewDataSource.swift */; };
 		FD370D3E220B155A00780DDC /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD370D3D220B155A00780DDC /* CheckoutViewController.swift */; };
-		FD41094D2205945400262738 /* ItemSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD41094C2205945400262738 /* ItemSelectionViewController.swift */; };
+		FD41094D2205945400262738 /* NewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD41094C2205945400262738 /* NewOrderViewController.swift */; };
 		FD65E0952204B92A00004B05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0942204B92A00004B05 /* AppDelegate.swift */; };
 		FD65E09A2204B92A00004B05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD65E0982204B92A00004B05 /* Main.storyboard */; };
 		FD65E09C2204B92B00004B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD65E09B2204B92B00004B05 /* Assets.xcassets */; };
@@ -22,6 +22,10 @@
 		FD65E0B12204C92300004B05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0B02204C92300004B05 /* User.swift */; };
 		FD65E0B32204D3C300004B05 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0B22204D3C300004B05 /* UserManager.swift */; };
 		FD65E0B62204D76D00004B05 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0B52204D76D00004B05 /* HomeViewController.swift */; };
+		FDBC22182211D07100733A5F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC22172211D07100733A5F /* Coordinator.swift */; };
+		FDBC221A2211D0AC00733A5F /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC22192211D0AC00733A5F /* Storyboarded.swift */; };
+		FDBC221C2211D19E00733A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC221B2211D19E00733A5F /* MainCoordinator.swift */; };
+		FDBC221E2211D4BF00733A5F /* CollectOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */; };
 		FDCE0B57220B889500FA30E7 /* OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE0B56220B889500FA30E7 /* OutlineView.swift */; };
 		FDCE0B59220B8AD100FA30E7 /* VCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */; };
 		FDF9A02522082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9A02422082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift */; };
@@ -35,7 +39,7 @@
 		FD279E8422089D7E00AFC8B8 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD36D1C42207A3D200848B2B /* ItemPageCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPageCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		FD370D3D220B155A00780DDC /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
-		FD41094C2205945400262738 /* ItemSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewController.swift; sourceTree = "<group>"; };
+		FD41094C2205945400262738 /* NewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewController.swift; sourceTree = "<group>"; };
 		FD65E0912204B92A00004B05 /* MD2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MD2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD65E0942204B92A00004B05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD65E0992204B92A00004B05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		FD65E0B02204C92300004B05 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FD65E0B22204D3C300004B05 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		FD65E0B52204D76D00004B05 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FDBC22172211D07100733A5F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FDBC22192211D0AC00733A5F /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		FDBC221B2211D19E00733A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderViewController.swift; sourceTree = "<group>"; };
 		FDCE0B56220B889500FA30E7 /* OutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineView.swift; sourceTree = "<group>"; };
 		FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCExtension.swift; sourceTree = "<group>"; };
 		FDF9A02422082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 		FD65E0932204B92A00004B05 /* MD2 */ = {
 			isa = PBXGroup;
 			children = (
+				FDBC22152211D05A00733A5F /* Coordinators */,
 				FD65E0B42204D74F00004B05 /* View Controllers */,
 				FD65E0A62204BCA100004B05 /* View */,
 				FD65E0A92204C62600004B05 /* Model */,
@@ -135,12 +144,31 @@
 		FD65E0B42204D74F00004B05 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FD65E0B52204D76D00004B05 /* HomeViewController.swift */,
-				FD41094C2205945400262738 /* ItemSelectionViewController.swift */,
-				FD370D3D220B155A00780DDC /* CheckoutViewController.swift */,
 				FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */,
+				FD65E0B52204D76D00004B05 /* HomeViewController.swift */,
+				FD41094C2205945400262738 /* NewOrderViewController.swift */,
+				FD370D3D220B155A00780DDC /* CheckoutViewController.swift */,
+				FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FDBC22152211D05A00733A5F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				FDBC22162211D06400733A5F /* Protocols */,
+				FDBC221B2211D19E00733A5F /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		FDBC22162211D06400733A5F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FDBC22172211D07100733A5F /* Coordinator.swift */,
+				FDBC22192211D0AC00733A5F /* Storyboarded.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FDF9A028220834D500BF933F /* Food Stuffs */ = {
@@ -252,11 +280,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD279E8622089D7E00AFC8B8 /* ItemCollectionViewCell.swift in Sources */,
+				FDBC221C2211D19E00733A5F /* MainCoordinator.swift in Sources */,
+				FDBC221E2211D4BF00733A5F /* CollectOrderViewController.swift in Sources */,
 				FDF9A02F2208356000BF933F /* DataStore.swift in Sources */,
 				FD65E0AB2204C64C00004B05 /* OrderManager.swift in Sources */,
 				FDF9A027220834C900BF933F /* FoodCatagories.swift in Sources */,
 				FDF9A0312208357600BF933F /* DataManager.swift in Sources */,
 				FD65E0AD2204C65900004B05 /* Order.swift in Sources */,
+				FDBC22182211D07100733A5F /* Coordinator.swift in Sources */,
+				FDBC221A2211D0AC00733A5F /* Storyboarded.swift in Sources */,
 				FDCE0B57220B889500FA30E7 /* OutlineView.swift in Sources */,
 				FD65E0A82204BCD500004B05 /* RoundedButton.swift in Sources */,
 				FD65E0B62204D76D00004B05 /* HomeViewController.swift in Sources */,
@@ -268,7 +300,7 @@
 				FD370D3E220B155A00780DDC /* CheckoutViewController.swift in Sources */,
 				FD65E0B32204D3C300004B05 /* UserManager.swift in Sources */,
 				FD65E0B12204C92300004B05 /* User.swift in Sources */,
-				FD41094D2205945400262738 /* ItemSelectionViewController.swift in Sources */,
+				FD41094D2205945400262738 /* NewOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

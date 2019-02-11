@@ -8,7 +8,8 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, Storyboarded {
+    weak var coordinator: MainCoordinator?
     
     // MARK: - @IBOutlets
     @IBOutlet var collectOrderButton: RoundedButton!
@@ -31,29 +32,44 @@ class HomeViewController: UIViewController {
     @IBOutlet var drinkImageView: UIImageView!
     @IBOutlet var drinkLabel: UILabel!
     
+    private var previousOrder: Order?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        loadTestData()
+        checkRecentOrder()
     }
     
-    private func loadTestData() {
-        if let lastOrder = OrderManager().getLastOrder() {
+    private func checkRecentOrder() {
+        if let prevOrder = coordinator?.orderManager.getLastOrder(), prevOrder.isFull() {
+            self.previousOrder = prevOrder
+            
             enableButton(collectOrderButton)
             enableButton(reorderButton)
             
             noRecentOrderLabel.isHidden = true
             recentOrderStackView.isHidden = false
             
-            mainLabel.text  = lastOrder.getItem(inCatagory: .Main)?.name  ?? "error"
-            snackLabel.text = lastOrder.getItem(inCatagory: .Snack)?.name ?? "error"
-            drinkLabel.text = lastOrder.getItem(inCatagory: .Drink)?.name ?? "error"
+            mainLabel.text  = prevOrder.getItem(inCatagory: .Main)?.name  ?? "error"
+            snackLabel.text = prevOrder.getItem(inCatagory: .Snack)?.name ?? "error"
+            drinkLabel.text = prevOrder.getItem(inCatagory: .Drink)?.name ?? "error"
         }
     }
     
     private func enableButton(_ button: UIButton) {
         button.isEnabled = true
-        button.backgroundColor = .red
+        button.alpha = 1
     }
+    
+    @IBAction func newOrderButton_touchUpInside(_ sender: Any) {
+        self.coordinator?.startNewOrder()
+    }
+    
+    @IBAction func collectOrderButton_touchUpInside(_ sender: Any) {
+        if let order = self.previousOrder {
+            coordinator?.collect(order: order)
+        }
+    }
+    
     
 }

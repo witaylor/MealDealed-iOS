@@ -12,8 +12,7 @@ class UserManager {
     
     private var currentUser: User? // nil if none signed in
     
-    public static let shared = UserManager()
-    private init() { CREATE_TEST_USER() }
+    init() { CREATE_TEST_USER() }
 
 //    private func saveState() {} // TODO: Save current signed in user, for between sessions
 //    private func loadState() {}
@@ -32,5 +31,4 @@ class UserManager {
         let user = User(name: "Will Taylor", uniUsername: "wat23")
         currentUser = user
     }
-
 }

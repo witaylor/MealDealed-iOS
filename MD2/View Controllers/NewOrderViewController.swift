@@ -1,5 +1,5 @@
 //
-//  ItemSelectionViewController.swift
+//  NewOrderViewController.swift
 //  MD2
 //
 //  Created by Will Taylor on 02/02/2019.
@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ItemSelectionViewController: UIViewController {
+class NewOrderViewController: UIViewController, Storyboarded {
+    weak var coordinator: MainCoordinator?
     
     // MARK: - @IBOutlets
     
@@ -49,21 +50,13 @@ class ItemSelectionViewController: UIViewController {
     }
     
     @IBAction func checkoutButton_touchUpInside(_ sender: Any) {
-        
         let mealDeal = DataManager.shared.getCurrentOrder()
         if mealDeal.isFull() { // has main, snack & drink
-            performSegue(withIdentifier: "SelectToCheckoutSegue", sender: self)
+            self.coordinator?.checkout(withMeal: mealDeal)
         } else {
             showErrorAlert(title: "Something's Missing!", message: "You must select a main, snack and a drink before going to checkout.")
         }
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SelectToCheckoutSegue" {
-            guard let destVC = segue.destination as? CheckoutViewController else { return }
-            destVC.mealDeal = DataManager.shared.getCurrentOrder()
-        }
     }
     
     
