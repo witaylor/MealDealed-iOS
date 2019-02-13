@@ -30,10 +30,10 @@
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9Wn-2A-d5v" userLabel="Recent Order Stack View">
                                 <rect key="frame" x="16" y="60" width="343" height="150"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnM-7c-vdT" userLabel="Main View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnM-7c-vdT" userLabel="Main View" customClass="OutlineView" customModule="MD2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="111.66666666666667" height="150"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h2u-f6-fGq">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Main" translatesAutoresizingMaskIntoConstraints="NO" id="h2u-f6-fGq">
                                                 <rect key="frame" x="0.0" y="0.0" width="111.66666666666667" height="111.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="h2u-f6-fGq" secondAttribute="height" multiplier="1:1" id="YDi-qW-OmB"/>
@@ -56,11 +56,17 @@
                                             <constraint firstAttribute="trailing" secondItem="h2u-f6-fGq" secondAttribute="trailing" id="lgP-wC-fbS"/>
                                             <constraint firstAttribute="trailing" secondItem="MR8-Px-Pa3" secondAttribute="trailing" id="oYO-2g-nlm"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="outline" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6k-ft-bmZ" userLabel="Snack View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6k-ft-bmZ" userLabel="Snack View" customClass="OutlineView" customModule="MD2" customModuleProvider="target">
                                         <rect key="frame" x="115.66666666666666" y="0.0" width="111.66666666666666" height="150"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-QV-Ovg">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Snack" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-QV-Ovg">
                                                 <rect key="frame" x="0.0" y="0.0" width="111.66666666666667" height="111.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="LQd-QV-Ovg" secondAttribute="height" multiplier="1:1" id="4y4-9D-C2S"/>
@@ -83,11 +89,17 @@
                                             <constraint firstItem="LQd-QV-Ovg" firstAttribute="leading" secondItem="k6k-ft-bmZ" secondAttribute="leading" id="nuA-yQ-mYZ"/>
                                             <constraint firstItem="Kvf-q1-9AW" firstAttribute="leading" secondItem="k6k-ft-bmZ" secondAttribute="leading" id="wHf-Q6-7yO"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="outline" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YC4-9w-6hU" userLabel="Drink View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YC4-9w-6hU" userLabel="Drink View" customClass="OutlineView" customModule="MD2" customModuleProvider="target">
                                         <rect key="frame" x="231.33333333333334" y="0.0" width="111.66666666666666" height="150"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A2q-8R-X74">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drink" translatesAutoresizingMaskIntoConstraints="NO" id="A2q-8R-X74">
                                                 <rect key="frame" x="0.0" y="0.0" width="111.66666666666667" height="111.66666666666667"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srn-A8-5b5">
@@ -108,6 +120,12 @@
                                             <constraint firstAttribute="bottom" secondItem="Srn-A8-5b5" secondAttribute="bottom" id="vTh-9c-MjD"/>
                                             <constraint firstItem="Srn-A8-5b5" firstAttribute="top" secondItem="A2q-8R-X74" secondAttribute="bottom" id="vWz-44-Mvl"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="outline" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -617,7 +635,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Drink" width="128" height="128"/>
+        <image name="Main" width="128" height="128"/>
         <image name="PlaceholderText1" width="926" height="263"/>
         <image name="QR" width="300" height="300"/>
+        <image name="Snack" width="128" height="128"/>
     </resources>
 </document>

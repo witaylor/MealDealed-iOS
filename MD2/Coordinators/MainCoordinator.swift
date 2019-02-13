@@ -19,8 +19,17 @@ class MainCoordinator: Coordinator {
     
     init(navController: UINavigationController) {
         self.navigationController = navController
+        setupNavBar()
         
         orderManager.loadOrders(forUser: userManager.getCurrentUser()!)
+    }
+    
+    private func setupNavBar() {
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.barTintColor = UIColor(red: 246/255, green: 168/255, blue: 89/255, alpha: 1)
+        navigationController.navigationBar.tintColor = .white
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func start() {

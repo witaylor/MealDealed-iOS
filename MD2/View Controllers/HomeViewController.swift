@@ -39,6 +39,11 @@ class HomeViewController: UIViewController, Storyboarded {
         checkRecentOrder()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkRecentOrder()
+    }
+    
     private func checkRecentOrder() {
         if let prevOrder = coordinator?.orderManager.getLastOrder(), prevOrder.isFull() {
             self.previousOrder = prevOrder
@@ -61,6 +66,12 @@ class HomeViewController: UIViewController, Storyboarded {
         snackLabel.text = order.getItem(inCatagory: .Snack)?.name ?? "error"
         drinkLabel.text = order.getItem(inCatagory: .Drink)?.name ?? "error"
     }
+    private func setMealImages(order: Order) {
+        mainImageView.image  = UIImage(named: "Main")
+        snackImageView.image = UIImage(named: "Snack")
+        drinkImageView.image = UIImage(named: "Drink")
+    }
+    
     
     private func enableButton(_ button: UIButton) {
         button.isEnabled = true

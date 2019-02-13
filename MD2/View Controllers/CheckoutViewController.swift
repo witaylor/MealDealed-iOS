@@ -41,10 +41,19 @@ class CheckoutViewController: UIViewController, Storyboarded {
     
     @IBAction func orderButton_touchUpInside(_ sender: Any) {
         let newOrder = Order(forCustomer: (coordinator?.userManager.getCurrentUser())!, withMealDeal: mealDeal)
+        coordinator?.orderManager.placeOrder(newOrder)
+        showOrderPlacedAlert(forOrder: newOrder)
+    }
+    
+    private func showOrderPlacedAlert(forOrder order: Order) {
+        let alert = UIAlertController(title: "Order Placed!", message: "Your order has been placed successfully.", preferredStyle: .alert)
         
-        let alert = createErrorAlert(title: "Order Placed!", message: "Your order has been placed successfully.")
+        alert.addAction(UIAlertAction(title: "Return", style: .default, handler: { (action) in
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        
         alert.addAction(UIAlertAction(title: "Collect Now", style: .default, handler: { (action) in
-            self.coordinator?.collect(order: newOrder)
+            self.coordinator?.collect(order: order)
         }))
         
         present(alert, animated: true, completion: nil)
