@@ -2,7 +2,7 @@
 //  ItemCollectionViewCell.swift
 //  MD2
 //
-//  Created by Will Taylor on 04/02/2019.
+//  Created by Will Taylor on 12/02/2019.
 //  Copyright © 2019 Will Taylor. All rights reserved.
 //
 
