@@ -21,7 +21,8 @@ class UserManager {
     func registerUser(name: String, uniUsername: String) {}
     
     private func CREATE_TEST_USER() {
-        let user = User(name: "Will Taylor", uniUsername: "wat23")
+        var user = User(name: "Will Taylor", uniUsername: "wat23")
+        user.id = UUID(uuidString: "8A506A69-B6BD-49E1-A69C-9D80A0D5FDC0")!
         currentUser = user
     }
 }

@@ -46,6 +46,12 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func viewPreviousOrders() {
+        let vc = PreviousOrdersViewController.instantiate()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func checkout(withMeal meal: MealDeal) {
         let vc = CheckoutViewController.instantiate()
         vc.coordinator = self
@@ -56,6 +62,7 @@ class MainCoordinator: Coordinator {
     func collect(order: Order) {
         let vc = CollectOrderViewController.instantiate()
         vc.coordinator = self
+        vc.orderToCollect = order
         navigationController.pushViewController(vc, animated: true)
     }
 }

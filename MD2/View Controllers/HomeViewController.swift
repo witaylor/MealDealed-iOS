@@ -31,12 +31,29 @@ class HomeViewController: UIViewController, Storyboarded {
     @IBOutlet var drinkImageView: UIImageView!
     @IBOutlet var drinkLabel: UILabel!
     
+    @IBOutlet var timeLeftLabel: UILabel!
+    @IBOutlet var closingTimeLabel: UILabel!
+    
+    
     private var previousOrder: Order? // nil if user doesn't have a recent order
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         checkRecentOrder()
+        setPreviousOrderGesture()
+        
+        timeLeftLabel.text? = "12:00"
+        closingTimeLabel.text = closingTimeLabel.text?.replacingOccurrences(of: "_TIME_", with: "10")
+    }
+ 
+    private func setPreviousOrderGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(recentOrderStackViewTapped))
+        recentOrderStackView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func recentOrderStackViewTapped() {
+        coordinator?.viewPreviousOrders()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +83,7 @@ class HomeViewController: UIViewController, Storyboarded {
         snackLabel.text = order.getItem(inCatagory: .Snack)?.name ?? "error"
         drinkLabel.text = order.getItem(inCatagory: .Drink)?.name ?? "error"
     }
+    
     private func setMealImages(order: Order) {
         mainImageView.image  = UIImage(named: "Main")
         snackImageView.image = UIImage(named: "Snack")
@@ -87,6 +105,11 @@ class HomeViewController: UIViewController, Storyboarded {
     @IBAction func collectOrderButton_touchUpInside(_ sender: Any) {
         if let order = self.previousOrder {
             coordinator?.collect(order: order)
+        }
+    }
+    @IBAction func reorderButton_touchUpInside(_ sender: Any) {
+        if let order = self.previousOrder {
+            coordinator?.checkout(withMeal: order.getMealDeal())
         }
     }
 }

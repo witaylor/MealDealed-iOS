@@ -16,10 +16,7 @@ class NewOrderViewController: UIViewController, Storyboarded {
     @IBOutlet var itemCatagoryButtons: [RoundedButton]!
     @IBOutlet var itemCollectionView: UICollectionView!
     
-    lazy var dataController: ItemPageCollectionViewDataSource = {
-        let dataController = ItemPageCollectionViewDataSource()
-        return dataController
-    }()
+    private var dataController = ItemPageCollectionViewDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()

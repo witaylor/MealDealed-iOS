@@ -15,6 +15,34 @@ class OrderManager {
     init() {}
     
     func loadOrders(forUser user: User) {
+        
+    }
+    
+//    func loadOrders(forUser user: User) {
+//        // TODO: Load orders from database for specified user
+//        
+//        LOAD_TEST_ORDERS(user) // for now
+//        
+//        let path = Bundle.main.path(forResource: "Orders", ofType: "json")
+//        if let path = URL(path) {
+//            encodeData(objects: orderList, forURL: path)
+//        }
+//    }
+//    
+//    private func encodeData(objects: [Order], forURL path: URL) {
+//        let encoder = JSONEncoder()
+//        do {
+//            let data = try encoder.encode(objects)
+//            try data.write(to: path)
+//        } catch {
+//            print("ERROR: could not write JSON (1: DS L34)")
+//        }
+//    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    func LOAD_TEST_ORDERS(_ user: User) {
         // todo: use user.uuid to name a file/directory wiht a list of orders
         var firstOrder = Order(forCustomer: user)
         firstOrder.addToOrder(item: FoodItem(name: "Ham Wrap", catagory: .Main, subCatagory: .Wrap))
@@ -39,4 +67,11 @@ class OrderManager {
         orderList.append(order)
     }
     
+    func orderCount() -> Int {
+        return orderList.count
+    }
+    
+    func order(forIndex index: Int) -> Order {
+        return orderList[index]
+    }    
 }

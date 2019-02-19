@@ -9,23 +9,26 @@
 import UIKit
 
 class OutlineView: UIView {
-
-    @IBInspectable var outline: Bool = false {
-        didSet { setOutline() }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
     }
     
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet { setCornerRadius() }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
     }
-
+    
+    private func setupView() {
+        self.layer.cornerRadius = 10
+        
+        self.setOutline()
+    }
     
     private func setOutline() {
         backgroundColor   = .clear
         layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = outline ? 1 : 0
-    }
-    
-    private func setCornerRadius() {
-        self.layer.cornerRadius = cornerRadius
+        layer.borderWidth = 1
     }
 }

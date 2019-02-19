@@ -6,7 +6,7 @@
 //  Copyright © 2019 Will Taylor. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct MealDeal {
     var main:  FoodItem?
@@ -21,18 +21,22 @@ struct MealDeal {
 struct Order {
     private var mealDeal: MealDeal = MealDeal()
     
-    private var dateOrdered = Date()
+    private(set) var dateOrdered = Date() 
     private var collected   = false
     
     private var customer: User
+    private(set) var qrCode: UIImage? // from string: customerUuid + dateOrdered
     
     init(forCustomer customer: User) {
         self.customer = customer
+        self.qrCode = QRCode.generate(from: "\(customer.id)\(dateOrdered)")
     }
     
     init(forCustomer customer: User, withMealDeal mealDeal: MealDeal) {
         self.customer = customer
         self.mealDeal = mealDeal
+        
+        self.qrCode = QRCode.generate(from: "\(customer.id)\(dateOrdered)")
     }
     
     mutating func addToOrder(item: FoodItem) {
@@ -64,6 +68,10 @@ struct Order {
         let hasDrink = (self.mealDeal.drink != nil)
         
         return (hasMain && hasSnack && hasDrink) // true if all are != nil
+    }
+    
+    func getMealDeal() -> MealDeal {
+        return self.mealDeal
     }
     
 }

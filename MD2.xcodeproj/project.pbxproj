@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FD279E8622089D7E00AFC8B8 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD279E8422089D7E00AFC8B8 /* ItemCollectionViewCell.swift */; };
+		FD33A26F2216D78300C5F4B0 /* PreviousOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD33A26E2216D78300C5F4B0 /* PreviousOrdersViewController.swift */; };
 		FD36D1C52207A3D200848B2B /* ItemPageCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36D1C42207A3D200848B2B /* ItemPageCollectionViewDataSource.swift */; };
 		FD370D3E220B155A00780DDC /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD370D3D220B155A00780DDC /* CheckoutViewController.swift */; };
 		FD41094D2205945400262738 /* NewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD41094C2205945400262738 /* NewOrderViewController.swift */; };
@@ -22,12 +23,15 @@
 		FD65E0B12204C92300004B05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0B02204C92300004B05 /* User.swift */; };
 		FD65E0B32204D3C300004B05 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0B22204D3C300004B05 /* UserManager.swift */; };
 		FD65E0B62204D76D00004B05 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0B52204D76D00004B05 /* HomeViewController.swift */; };
+		FD6E3F5E221AFE9E003C1A60 /* Orders.json in Resources */ = {isa = PBXBuildFile; fileRef = FD6E3F5C221AFE9E003C1A60 /* Orders.json */; };
 		FDBC22182211D07100733A5F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC22172211D07100733A5F /* Coordinator.swift */; };
 		FDBC221A2211D0AC00733A5F /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC22192211D0AC00733A5F /* Storyboarded.swift */; };
 		FDBC221C2211D19E00733A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC221B2211D19E00733A5F /* MainCoordinator.swift */; };
 		FDBC221E2211D4BF00733A5F /* CollectOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */; };
+		FDC4699E221BE59400847D3A /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC4699D221BE59400847D3A /* QRCode.swift */; };
 		FDCE0B57220B889500FA30E7 /* OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE0B56220B889500FA30E7 /* OutlineView.swift */; };
 		FDCE0B59220B8AD100FA30E7 /* VCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */; };
+		FDDDCAFA2218746B0008BAFE /* PreviousOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDDCAF92218746B0008BAFE /* PreviousOrderTableViewCell.swift */; };
 		FDF9A02522082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9A02422082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift */; };
 		FDF9A027220834C900BF933F /* FoodCatagories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9A026220834C900BF933F /* FoodCatagories.swift */; };
 		FDF9A02D2208355200BF933F /* Items.json in Resources */ = {isa = PBXBuildFile; fileRef = FDF9A02C2208355200BF933F /* Items.json */; };
@@ -37,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		FD279E8422089D7E00AFC8B8 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		FD33A26E2216D78300C5F4B0 /* PreviousOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrdersViewController.swift; sourceTree = "<group>"; };
 		FD36D1C42207A3D200848B2B /* ItemPageCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPageCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		FD370D3D220B155A00780DDC /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		FD41094C2205945400262738 /* NewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewController.swift; sourceTree = "<group>"; };
@@ -53,12 +58,15 @@
 		FD65E0B02204C92300004B05 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FD65E0B22204D3C300004B05 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		FD65E0B52204D76D00004B05 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FD6E3F5C221AFE9E003C1A60 /* Orders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Orders.json; sourceTree = "<group>"; };
 		FDBC22172211D07100733A5F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FDBC22192211D0AC00733A5F /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		FDBC221B2211D19E00733A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderViewController.swift; sourceTree = "<group>"; };
+		FDC4699D221BE59400847D3A /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		FDCE0B56220B889500FA30E7 /* OutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineView.swift; sourceTree = "<group>"; };
 		FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCExtension.swift; sourceTree = "<group>"; };
+		FDDDCAF92218746B0008BAFE /* PreviousOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrderTableViewCell.swift; sourceTree = "<group>"; };
 		FDF9A02422082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		FDF9A026220834C900BF933F /* FoodCatagories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCatagories.swift; sourceTree = "<group>"; };
 		FDF9A02C2208355200BF933F /* Items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Items.json; sourceTree = "<group>"; };
@@ -105,11 +113,12 @@
 		FD65E0932204B92A00004B05 /* MD2 */ = {
 			isa = PBXGroup;
 			children = (
+				FD65E0942204B92A00004B05 /* AppDelegate.swift */,
+				FDC4699D221BE59400847D3A /* QRCode.swift */,
 				FDBC22152211D05A00733A5F /* Coordinators */,
 				FD65E0B42204D74F00004B05 /* View Controllers */,
 				FD65E0A62204BCA100004B05 /* View */,
 				FD65E0A92204C62600004B05 /* Model */,
-				FD65E0942204B92A00004B05 /* AppDelegate.swift */,
 				FD65E09B2204B92B00004B05 /* Assets.xcassets */,
 				FD65E0A02204B92B00004B05 /* Info.plist */,
 			);
@@ -123,6 +132,7 @@
 				FD279E8422089D7E00AFC8B8 /* ItemCollectionViewCell.swift */,
 				FD65E0A72204BCD500004B05 /* RoundedButton.swift */,
 				FDCE0B56220B889500FA30E7 /* OutlineView.swift */,
+				FDDDCAF92218746B0008BAFE /* PreviousOrderTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,9 +140,9 @@
 		FD65E0A92204C62600004B05 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FD6E3F5A221AFE28003C1A60 /* JSON Files */,
 				FDF9A0302208357600BF933F /* DataManager.swift */,
 				FDF9A02E2208356000BF933F /* DataStore.swift */,
-				FDF9A02C2208355200BF933F /* Items.json */,
 				FDF9A02B2208351D00BF933F /* CV DataSources */,
 				FDF9A02A220834F100BF933F /* User Management */,
 				FDF9A029220834E700BF933F /* Orders */,
@@ -149,8 +159,18 @@
 				FD41094C2205945400262738 /* NewOrderViewController.swift */,
 				FD370D3D220B155A00780DDC /* CheckoutViewController.swift */,
 				FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */,
+				FD33A26E2216D78300C5F4B0 /* PreviousOrdersViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FD6E3F5A221AFE28003C1A60 /* JSON Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD6E3F5C221AFE9E003C1A60 /* Orders.json */,
+				FDF9A02C2208355200BF933F /* Items.json */,
+			);
+			path = "JSON Files";
 			sourceTree = "<group>";
 		};
 		FDBC22152211D05A00733A5F /* Coordinators */ = {
@@ -265,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD6E3F5E221AFE9E003C1A60 /* Orders.json in Resources */,
 				FDF9A02D2208355200BF933F /* Items.json in Resources */,
 				FD65E09F2204B92B00004B05 /* LaunchScreen.storyboard in Resources */,
 				FD65E09C2204B92B00004B05 /* Assets.xcassets in Resources */,
@@ -280,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD279E8622089D7E00AFC8B8 /* ItemCollectionViewCell.swift in Sources */,
+				FD33A26F2216D78300C5F4B0 /* PreviousOrdersViewController.swift in Sources */,
 				FDBC221C2211D19E00733A5F /* MainCoordinator.swift in Sources */,
 				FDBC221E2211D4BF00733A5F /* CollectOrderViewController.swift in Sources */,
 				FDF9A02F2208356000BF933F /* DataStore.swift in Sources */,
@@ -297,9 +319,11 @@
 				FDF9A02522082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift in Sources */,
 				FD65E0952204B92A00004B05 /* AppDelegate.swift in Sources */,
 				FD36D1C52207A3D200848B2B /* ItemPageCollectionViewDataSource.swift in Sources */,
+				FDC4699E221BE59400847D3A /* QRCode.swift in Sources */,
 				FD370D3E220B155A00780DDC /* CheckoutViewController.swift in Sources */,
 				FD65E0B32204D3C300004B05 /* UserManager.swift in Sources */,
 				FD65E0B12204C92300004B05 /* User.swift in Sources */,
+				FDDDCAFA2218746B0008BAFE /* PreviousOrderTableViewCell.swift in Sources */,
 				FD41094D2205945400262738 /* NewOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,7 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.willtaylor.MD2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willtaylor.MealDealed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -471,7 +495,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.willtaylor.MD2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willtaylor.MealDealed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

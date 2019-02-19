@@ -12,9 +12,9 @@ class ItemPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     // MARK: - CollectionView DataSources
     
-    var mainSelectionDataSource  = ItemSelectionCollectionViewDataSource(forCatagory: .Main)
-    var snackSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Snack)
-    var drinkSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Drink)
+    private var mainSelectionDataSource  = ItemSelectionCollectionViewDataSource(forCatagory: .Main)
+    private var snackSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Snack)
+    private var drinkSelectionDataSource = ItemSelectionCollectionViewDataSource(forCatagory: .Drink)
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3 // mains, snack, drink
@@ -23,9 +23,13 @@ class ItemPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemPageCell", for: indexPath)
         cell.backgroundColor = .clear
+    
         
         let itemCollectionView = setupCollectionView(forCell: cell, atIndex: indexPath)
-        cell.addSubview(itemCollectionView)
+        
+        if cell.subviews.count < 2 { // #warning("hacked solution -  fix this later")
+            cell.addSubview(itemCollectionView)
+        }
         
         return cell
     }
