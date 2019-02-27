@@ -18,10 +18,5 @@ struct User {
         self.name = name
         self.uniUsername = uniUsername
         self.id = UUID()
-        
-        print("new user:")
-        print("name: \(name)")
-        print("uni : \(uniUsername)")
-        print("uuid: \(id)")
     }
 }

@@ -7,31 +7,30 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class DataStore {
     
     let dataURL = Bundle.main.path(forResource: "Items", ofType: "json")
+    let db = Firestore.firestore()
     
     // MARK: - Save Data
     
     func save(_ mealObjects: [FoodItem]) {
-        if let path = dataURL {
-            var dataObjects = [DataItem]()
-            mealObjects.forEach { (obj) in
-                dataObjects.append(obj.toDataItem())
-            }
+        mealObjects.forEach { (item) in
+            let dataItem = item.toDataItem()
             
-            encodeData(objects: dataObjects, forURL: URL(fileReferenceLiteralResourceName: path))
-        }
-    }
-    
-    private func encodeData(objects: [DataItem], forURL path: URL) {
-        let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(objects)
-            try data.write(to: path)
-        } catch {
-            print("ERROR: could not write JSON (1: DS L34)")
+            var ref: DocumentReference? = nil
+            ref = db.collection("stock").addDocument(data: [
+                "name": dataItem.name,
+                "catagory": dataItem.catagory
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
         }
     }
     

@@ -13,31 +13,13 @@ class OrderManager {
     private var orderList = [Order]()
     
     init() {}
+
     
     func loadOrders(forUser user: User) {
+        // TODO: Load orders from database for specified user
         
+        LOAD_TEST_ORDERS(user) // for now
     }
-    
-//    func loadOrders(forUser user: User) {
-//        // TODO: Load orders from database for specified user
-//        
-//        LOAD_TEST_ORDERS(user) // for now
-//        
-//        let path = Bundle.main.path(forResource: "Orders", ofType: "json")
-//        if let path = URL(path) {
-//            encodeData(objects: orderList, forURL: path)
-//        }
-//    }
-//    
-//    private func encodeData(objects: [Order], forURL path: URL) {
-//        let encoder = JSONEncoder()
-//        do {
-//            let data = try encoder.encode(objects)
-//            try data.write(to: path)
-//        } catch {
-//            print("ERROR: could not write JSON (1: DS L34)")
-//        }
-//    }
     
     
     ////////////////////////////////////////////////////////////////////////////////////////////////

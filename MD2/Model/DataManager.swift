@@ -19,7 +19,11 @@ class DataManager {
     private var currentOrder = MealDeal()
     
     public static let shared = DataManager()
-    private init() { loadItems() }
+    private init() {
+        loadItems()
+        
+        store.save(allItems)
+    }
     
     func addToMealDeal(_ item: FoodItem) {
         if item.catagory == .Main {
