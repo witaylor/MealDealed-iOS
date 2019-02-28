@@ -11,12 +11,35 @@ import FirebaseFirestore
 
 class DataStore {
     
+    var saveCount = 0
+    var loadCount = 0
+    
     let dataURL = Bundle.main.path(forResource: "Items", ofType: "json")
-    let db = Firestore.firestore()
+    let db: Firestore
+    
+    init() {
+        self.db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
+        
+        // handle dates from Firestore:
+        /*
+         // old:
+         let date: Date = documentSnapshot.get("created_at") as! Date
+         // new:
+         let timestamp: Timestamp = documentSnapshot.get("created_at") as! Timestamp
+         let date: Date = timestamp.dateValue()
+        */
+    }
     
     // MARK: - Save Data
     
     func save(_ mealObjects: [FoodItem]) {
+        saveCount += 1
+        print("Saving to Firebase :: \(saveCount)")
+        
         mealObjects.forEach { (item) in
             let dataItem = item.toDataItem()
             
@@ -37,31 +60,34 @@ class DataStore {
     // MARK: - Loading Data
     
     func load() -> [FoodItem] {
-        if let path = dataURL {
-            let dataObjects = decodeData(URL(fileURLWithPath: path))
-            var mealObjects = [FoodItem]()
-            
-            dataObjects.forEach { (obj) in
-                mealObjects.append(obj.toFoodItem())
+        loadCount += 1
+        print("loading from firebase :: \(loadCount)")
+        
+        var items = [FoodItem]()
+        
+        db.collection("stock").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\nAttempting: \(document)")
+                    let data = document.data()
+                    let dataName = data["name"] as! String
+                    let dataCat  = data["catagory"] as! String
+                    
+                    let item = DataItem(name: dataName, catagory: dataCat).toFoodItem()
+                    
+                    print("Created: \(item)")
+                    
+                    items.append(item)
+                    print("appened\n")
+                }
             }
-            
-            return mealObjects
-        } else {
-            print("ERROR: Could not load from JSON (1: DS L52)")
         }
         
-        return [FoodItem]()
-    }
-    
-    private func decodeData(_ path: URL) -> [DataItem] {
-        if let data = try? Data(contentsOf: path) {
-            let decoder = JSONDecoder()
-            do {
-                return try decoder.decode([DataItem].self, from: data)
-            } catch {
-                print("ERROR: Could not load from JSON (2: DS L64)")
-            }
-        }
-        return [DataItem]()
+        print("Items:")
+        print(items)
+        
+        return items
     }
 }
