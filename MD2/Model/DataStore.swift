@@ -22,16 +22,6 @@ class DataStore {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
-        
-        
-        // handle dates from Firestore:
-        /*
-         // old:
-         let date: Date = documentSnapshot.get("created_at") as! Date
-         // new:
-         let timestamp: Timestamp = documentSnapshot.get("created_at") as! Timestamp
-         let date: Date = timestamp.dateValue()
-        */
     }
     
     // MARK: - Save Data
@@ -59,35 +49,33 @@ class DataStore {
     
     // MARK: - Loading Data
     
-    func load() -> [FoodItem] {
-        loadCount += 1
-        print("loading from firebase :: \(loadCount)")
+    func load(completion: @escaping(_ res:[FoodItem]?) -> Void) {
+        print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("> loading from firebase")
         
-        var items = [FoodItem]()
-        
-        db.collection("stock").getDocuments() { (querySnapshot, err) in
+
+        self.db.collection("stock").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("\n>>Error getting documents: \(err)")
+                completion(nil)
             } else {
+                print("> Load successful")
+                var items = [FoodItem]()
                 for document in querySnapshot!.documents {
-                    print("\nAttempting: \(document)")
+                    print("\n> Attempting: \(document)")
                     let data = document.data()
                     let dataName = data["name"] as! String
                     let dataCat  = data["catagory"] as! String
                     
                     let item = DataItem(name: dataName, catagory: dataCat).toFoodItem()
                     
-                    print("Created: \(item)")
+                    print("> Created: \(item)")
                     
                     items.append(item)
-                    print("appened\n")
+                    print("> Item Appended\n")
                 }
+                completion(items)
             }
         }
-        
-        print("Items:")
-        print(items)
-        
-        return items
     }
 }

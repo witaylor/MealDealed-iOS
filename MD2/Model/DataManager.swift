@@ -21,8 +21,6 @@ class DataManager {
     public static let shared = DataManager()
     private init() {
         loadItems()
-        
-        store.save(allItems)
     }
     
     func addToMealDeal(_ item: FoodItem) {
@@ -53,11 +51,13 @@ class DataManager {
     }
     
     func loadItems() {
-        self.allItems = store.load()
+        store.load() { (res) in
+            self.allItems = res
         
-        allItems.forEach { (item) in
-            // append to sortedItems["M" || "S" || "D"]
-            sortedItems[item.catagory.rawValue]?.append(item)
+            self.allItems.forEach { (item) in
+                // append to sortedItems["M" || "S" || "D"]
+                self.sortedItems[item.catagory.rawValue]?.append(item)
+            }
         }
     }
     
