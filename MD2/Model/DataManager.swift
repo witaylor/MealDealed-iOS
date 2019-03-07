@@ -18,9 +18,23 @@ class DataManager {
                                                       "D": [FoodItem]()]
     private var currentOrder = MealDeal()
     
+    private var loadItemsCalled = false // flag to prevent infinite calling of store.load()
+    
     public static let shared = DataManager()
     private init() {
-        loadItems()
+        self.loadItems()
+    }
+    
+    func loadItems() {
+        store.load() { (res) in
+            if let items = res {
+                self.allItems = items
+                
+                for item in items {
+                    self.sortedItems[item.catagory.rawValue]?.append(item)
+                }
+            }
+        }
     }
     
     func addToMealDeal(_ item: FoodItem) {
@@ -50,19 +64,10 @@ class DataManager {
         return self.currentOrder
     }
     
-    func loadItems() {
-        store.load() { (res) in
-            self.allItems = res
-        
-            self.allItems.forEach { (item) in
-                // append to sortedItems["M" || "S" || "D"]
-                self.sortedItems[item.catagory.rawValue]?.append(item)
-            }
-        }
-    }
-    
     func getItems(catagory: FoodCatagory) -> [FoodItem] {
-        return sortedItems[catagory.rawValue] ?? [FoodItem]()
+        #warning("Unsafe unwrap - bad!")
+        print("\n~~~~~ returning -- \(sortedItems[catagory.rawValue]!)\n")
+        return sortedItems[catagory.rawValue]!
     }
     
 }

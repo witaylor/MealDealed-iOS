@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B02E7231F01A690EA81F0B7 /* Pods_MD2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE863DABEA1E006D2FEC43E /* Pods_MD2.framework */; };
+		FD0C754B2231660A00B22C5B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0C754A2231660A00B22C5B /* LoginViewController.swift */; };
 		FD279E8622089D7E00AFC8B8 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD279E8422089D7E00AFC8B8 /* ItemCollectionViewCell.swift */; };
 		FD33A26F2216D78300C5F4B0 /* PreviousOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD33A26E2216D78300C5F4B0 /* PreviousOrdersViewController.swift */; };
 		FD36D1C52207A3D200848B2B /* ItemPageCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36D1C42207A3D200848B2B /* ItemPageCollectionViewDataSource.swift */; };
@@ -45,6 +46,7 @@
 		874572959F6EE2B1AD63552C /* Pods-MD2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MD2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MD2/Pods-MD2.debug.xcconfig"; sourceTree = "<group>"; };
 		9DE863DABEA1E006D2FEC43E /* Pods_MD2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MD2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21D7F7FADD8A444668B2DCE /* Pods-MD2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MD2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MD2/Pods-MD2.release.xcconfig"; sourceTree = "<group>"; };
+		FD0C754A2231660A00B22C5B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FD279E8422089D7E00AFC8B8 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD33A26E2216D78300C5F4B0 /* PreviousOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrdersViewController.swift; sourceTree = "<group>"; };
 		FD36D1C42207A3D200848B2B /* ItemPageCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPageCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		FD65E0932204B92A00004B05 /* MD2 */ = {
 			isa = PBXGroup;
 			children = (
+				FD65E0B52204D76D00004B05 /* HomeViewController.swift */,
 				FD65E0942204B92A00004B05 /* AppDelegate.swift */,
 				FDC4699D221BE59400847D3A /* QRCode.swift */,
 				FDBC22152211D05A00733A5F /* Coordinators */,
@@ -182,11 +185,11 @@
 			isa = PBXGroup;
 			children = (
 				FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */,
-				FD65E0B52204D76D00004B05 /* HomeViewController.swift */,
 				FD41094C2205945400262738 /* NewOrderViewController.swift */,
 				FD370D3D220B155A00780DDC /* CheckoutViewController.swift */,
 				FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */,
 				FD33A26E2216D78300C5F4B0 /* PreviousOrdersViewController.swift */,
+				FD0C754A2231660A00B22C5B /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MD2/Pods-MD2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -365,6 +369,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -411,6 +416,7 @@
 				FD65E0B32204D3C300004B05 /* UserManager.swift in Sources */,
 				FD65E0B12204C92300004B05 /* User.swift in Sources */,
 				FDDDCAFA2218746B0008BAFE /* PreviousOrderTableViewCell.swift in Sources */,
+				FD0C754B2231660A00B22C5B /* LoginViewController.swift in Sources */,
 				FD41094D2205945400262738 /* NewOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -50,29 +50,19 @@ class DataStore {
     // MARK: - Loading Data
     
     func load(completion: @escaping(_ res:[FoodItem]?) -> Void) {
-        print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("> loading from firebase")
-        
-
         self.db.collection("stock").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("\n>>Error getting documents: \(err)")
                 completion(nil)
             } else {
-                print("> Load successful")
                 var items = [FoodItem]()
                 for document in querySnapshot!.documents {
-                    print("\n> Attempting: \(document)")
                     let data = document.data()
                     let dataName = data["name"] as! String
                     let dataCat  = data["catagory"] as! String
                     
                     let item = DataItem(name: dataName, catagory: dataCat).toFoodItem()
-                    
-                    print("> Created: \(item)")
-                    
                     items.append(item)
-                    print("> Item Appended\n")
                 }
                 completion(items)
             }

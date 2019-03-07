@@ -8,5 +8,6 @@ target 'MD2' do
   # Pods for MD2
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
 
 end

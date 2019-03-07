@@ -10,6 +10,72 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="znD-1W-Gxl">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TSC-fW-Io2" customClass="LoginViewController" customModule="MD2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tk1-4M-HOn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Pc-TO-RXd" userLabel="Login Field Stack">
+                                <rect key="frame" x="16" y="352" width="343" height="108"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bath Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDU-dc-JoY">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9kU-xk-lqW"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOh-Ro-MeU">
+                                        <rect key="frame" x="0.0" y="58" width="343" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RIU-Vc-eGU"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDa-FU-nVT">
+                                <rect key="frame" x="16" y="696" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LXQ-7R-K2K"/>
+                                </constraints>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButton_touchUpInside:" destination="TSC-fW-Io2" eventType="touchUpInside" id="b5i-0j-850"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oK4-y5-ZdB" firstAttribute="trailing" secondItem="6Pc-TO-RXd" secondAttribute="trailing" constant="16" id="5Z5-TF-bdX"/>
+                            <constraint firstItem="6Pc-TO-RXd" firstAttribute="centerY" secondItem="tk1-4M-HOn" secondAttribute="centerY" id="KM0-0n-Ifq"/>
+                            <constraint firstItem="oK4-y5-ZdB" firstAttribute="bottom" secondItem="BDa-FU-nVT" secondAttribute="bottom" constant="32" id="OKH-8E-bwR"/>
+                            <constraint firstItem="BDa-FU-nVT" firstAttribute="leading" secondItem="oK4-y5-ZdB" secondAttribute="leading" constant="16" id="QN8-T0-zLy"/>
+                            <constraint firstItem="oK4-y5-ZdB" firstAttribute="trailing" secondItem="BDa-FU-nVT" secondAttribute="trailing" constant="16" id="Yk5-5t-KGy"/>
+                            <constraint firstItem="6Pc-TO-RXd" firstAttribute="leading" secondItem="oK4-y5-ZdB" secondAttribute="leading" constant="16" id="twB-JW-Bpr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oK4-y5-ZdB"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="BDU-dc-JoY" id="C3g-eC-QLl"/>
+                        <outlet property="passwordTextField" destination="hOh-Ro-MeU" id="3Ie-e7-Cbf"/>
+                        <outlet property="signInButton" destination="BDa-FU-nVT" id="P9I-1K-wX8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6Q-c4-eMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-127" y="-565"/>
+        </scene>
         <!--Meal Dealed-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -158,7 +224,7 @@
                                                 <rect key="frame" x="173.66666666666663" y="0.0" width="169.33333333333337" height="60.666666666666664"/>
                                                 <color key="backgroundColor" red="0.35686274509999999" green="0.61960784310000006" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <state key="normal" title="Reorder">
+                                                <state key="normal" title="History">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>

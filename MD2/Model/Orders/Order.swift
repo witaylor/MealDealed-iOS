@@ -22,21 +22,35 @@ struct Order {
     private var mealDeal: MealDeal = MealDeal()
     
     private(set) var dateOrdered = Date() 
-    private var collected   = false
+    var collected   = false
     
-    private var customer: User
+    var customer: User
     private(set) var qrCode: UIImage? // from string: customerUuid + dateOrdered
     
     init(forCustomer customer: User) {
         self.customer = customer
-        self.qrCode = QRCode.generate(from: "\(customer.id)\(dateOrdered)")
+        self.qrCode = QRCode.generate(from: "\(customer.uniUsername)\(dateOrdered)")
     }
     
     init(forCustomer customer: User, withMealDeal mealDeal: MealDeal) {
         self.customer = customer
         self.mealDeal = mealDeal
         
-        self.qrCode = QRCode.generate(from: "\(customer.id)\(dateOrdered)")
+        self.qrCode = QRCode.generate(from: "\(customer.uniUsername)\(dateOrdered)")
+    }
+    
+    init(fromFirebaseData data: [String: Any], customer: User) {
+
+        let mainName  = data["main"] as! String
+        let snackName  = data["snack"] as! String
+        let drinkName  = data["drink"] as! String
+        let collected = data["collected"] as! String
+        
+        self.customer = customer
+        
+        self.addToOrder(item: FoodItem(name: mainName, catagory: .Main, subCatagory: nil))
+        self.addToOrder(item: FoodItem(name: snackName, catagory: .Snack, subCatagory: nil))
+        self.addToOrder(item: FoodItem(name: drinkName, catagory: .Drink, subCatagory: nil))
     }
     
     mutating func addToOrder(item: FoodItem) {

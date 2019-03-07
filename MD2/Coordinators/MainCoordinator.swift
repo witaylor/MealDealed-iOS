@@ -18,6 +18,8 @@ class MainCoordinator: Coordinator {
     var orderManager = OrderManager()
     
     init(navController: UINavigationController) {
+        DataManager.shared.loadItems() // begin loading items ASAP
+        
         self.navigationController = navController
         setupNavBar()
         
@@ -35,15 +37,42 @@ class MainCoordinator: Coordinator {
     func start() {
         let vc = HomeViewController.instantiate()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func start(login: Bool, animated: Bool) {
+        if login {
+            self.login(animated: animated)
+        } else {
+            let vc = HomeViewController.instantiate()
+            vc.coordinator = self
+            navigationController.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    private func login(animated: Bool) {
+        let vc = LoginViewController.instantiate()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: animated)
     }
     
     // MARK: - Navigation Functions
     
     func startNewOrder() {
+        // Check if items have loaded - maybe this check shouldn't be here??
+        if DataManager.shared.getItems(catagory: .Main).count <= 0 {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
+                self.goToNewOrder()
+            })
+        } else {
+            self.goToNewOrder()
+        }
+    }
+    
+    private func goToNewOrder() {
         let vc = NewOrderViewController.instantiate()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        self.navigationController.pushViewController(vc, animated: true)
     }
     
     func viewPreviousOrders() {

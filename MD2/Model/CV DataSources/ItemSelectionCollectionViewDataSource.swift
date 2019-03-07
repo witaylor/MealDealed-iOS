@@ -15,7 +15,7 @@ class ItemSelectionCollectionViewDataSource: NSObject, UICollectionViewDataSourc
     init(forCatagory catagory: FoodCatagory) {
         super.init()
         
-        items = DataManager.shared.getItems(catagory: catagory)
+        self.items = DataManager.shared.getItems(catagory: catagory)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
