@@ -14,10 +14,13 @@ class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     // Shared Managers
-    var userManager  = UserManager()
-    var orderManager = OrderManager()
+    var userManager : UserManager
+    var orderManager: OrderManager
     
     init(navController: UINavigationController) {
+        self.userManager  = UserManager()
+        self.orderManager = OrderManager(forUser: userManager.getCurrentUser()!)
+        
         DataManager.shared.loadItems() // begin loading items ASAP
         
         self.navigationController = navController
@@ -35,9 +38,11 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = HomeViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        if userManager.getCurrentUser() != nil {
+            start(login: false, animated: false)
+        } else {
+            start(login: true, animated: false)
+        }
     }
     
     func start(login: Bool, animated: Bool) {

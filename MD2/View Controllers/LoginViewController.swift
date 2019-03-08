@@ -40,6 +40,8 @@ class LoginViewController: UIViewController, Storyboarded, UITextFieldDelegate {
     }
 
     @IBAction func signInButton_touchUpInside(_ sender: Any) {
+//        guard let nameText = "__TEST_NAME__" else { return }
+        let nameText = "__TEST_NAME__"
         guard let email    = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
@@ -79,9 +81,9 @@ class LoginViewController: UIViewController, Storyboarded, UITextFieldDelegate {
             }
             
         
-            
             if error?.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                self!.createNewUser(email: email, password: password)
+                self?.coordinator?.userManager.registerUser(name: nameText, withEmail: email, password: password)
+                self?.coordinator?.start(login: false, animated: true)
             }
             
             if error == nil {
@@ -90,20 +92,6 @@ class LoginViewController: UIViewController, Storyboarded, UITextFieldDelegate {
                 
                 self!.removeFromParent()
                 self?.coordinator?.start(login: false, animated: true)
-            }
-        }
-        
-        
-        
-        
-    }
-    
-    private func createNewUser(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if error == nil {
-                print(authResult?.user.uid)
-                
-                self.coordinator?.start(login: false, animated: true)
             }
         }
     }

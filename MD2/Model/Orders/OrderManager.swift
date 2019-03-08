@@ -45,7 +45,6 @@ class OrderManager {
                     let data = document.data()
                     let order = Order(fromFirebaseData: data, customer: self.currentUser)
                     self.orderList.append(order)
-                    }
                 }
             }
         }

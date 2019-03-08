@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navController = UINavigationController()
         coordinator = MainCoordinator(navController: navController)
-        coordinator?.start(login: true, animated: false)
+        coordinator?.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController

@@ -11,12 +11,18 @@ import Foundation
 struct User {
     
     var name: String
-    var id: UUID
     var uniUsername: String // e.g. abc123
     
     init(name: String, uniUsername: String) {
         self.name = name
         self.uniUsername = uniUsername
-        self.id = UUID()
+    }
+    
+    init(name: String, withEmail email: String) {
+        self.name = name
+        
+        let username = email.prefix(upTo: email.firstIndex(of: "@")!)
+        print("Creating user: \(name) :: \(username)")
+        self.uniUsername = String(username)
     }
 }

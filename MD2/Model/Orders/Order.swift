@@ -40,17 +40,18 @@ struct Order {
     }
     
     init(fromFirebaseData data: [String: Any], customer: User) {
-
         let mainName  = data["main"] as! String
         let snackName  = data["snack"] as! String
         let drinkName  = data["drink"] as! String
-        let collected = data["collected"] as! String
+        let collected = data["collected"] as! Bool
         
         self.customer = customer
         
         self.addToOrder(item: FoodItem(name: mainName, catagory: .Main, subCatagory: nil))
         self.addToOrder(item: FoodItem(name: snackName, catagory: .Snack, subCatagory: nil))
         self.addToOrder(item: FoodItem(name: drinkName, catagory: .Drink, subCatagory: nil))
+        
+        self.collected = collected
     }
     
     mutating func addToOrder(item: FoodItem) {
