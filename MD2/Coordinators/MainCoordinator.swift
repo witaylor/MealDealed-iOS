@@ -15,18 +15,18 @@ class MainCoordinator: Coordinator {
     
     // Shared Managers
     var userManager : UserManager
-    var orderManager: OrderManager
+    var orderManager: OrderManager?
+    
+    private var initialScreen = true
     
     init(navController: UINavigationController) {
-        self.userManager  = UserManager()
-        self.orderManager = OrderManager(forUser: userManager.getCurrentUser()!)
-        
+        self.userManager = UserManager()
         DataManager.shared.loadItems() // begin loading items ASAP
         
         self.navigationController = navController
         setupNavBar()
         
-        orderManager.loadOrders(forUser: userManager.getCurrentUser()!)
+        self.userManager.startFunction = self.start
     }
     
     private func setupNavBar() {
@@ -38,11 +38,27 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
+        // TODO check for internet connection;
+        // if none && signed in :: go to previous orders.
+        // if none && not signed in :: go to login & display error "need internet connection"
+        
         if userManager.getCurrentUser() != nil {
-            start(login: false, animated: false)
-        } else {
+            print(" >> GOING TO HOMEPAGE")
+            
+            self.orderManager = OrderManager(forUser: userManager.getCurrentUser()!)
+            self.orderManager?.loadOrders(forUser: userManager.getCurrentUser()!)
+            
+            navigationController = UINavigationController(rootViewController: HomeViewController.instantiate())
+            setupNavBar()
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            appdelegate.window!.rootViewController = navigationController
+            
+            start(login: false, animated: !initialScreen)
+        } else {            
             start(login: true, animated: false)
         }
+        
+        initialScreen = false
     }
     
     func start(login: Bool, animated: Bool) {

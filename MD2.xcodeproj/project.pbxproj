@@ -64,7 +64,7 @@
 		FD65E0AE2204C77000004B05 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		FD65E0B02204C92300004B05 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FD65E0B22204D3C300004B05 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		FD65E0B52204D76D00004B05 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FD65E0B52204D76D00004B05 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		FD68C2A422255D6F009BBB73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD6E3F5C221AFE9E003C1A60 /* Orders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Orders.json; sourceTree = "<group>"; };
 		FDBC22172211D07100733A5F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -141,9 +141,9 @@
 		FD65E0932204B92A00004B05 /* MD2 */ = {
 			isa = PBXGroup;
 			children = (
-				FD65E0B52204D76D00004B05 /* HomeViewController.swift */,
 				FD65E0942204B92A00004B05 /* AppDelegate.swift */,
 				FDC4699D221BE59400847D3A /* QRCode.swift */,
+				FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */,
 				FDBC22152211D05A00733A5F /* Coordinators */,
 				FD65E0B42204D74F00004B05 /* View Controllers */,
 				FD65E0A62204BCA100004B05 /* View */,
@@ -184,7 +184,7 @@
 		FD65E0B42204D74F00004B05 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */,
+				FD65E0B52204D76D00004B05 /* HomeViewController.swift */,
 				FD41094C2205945400262738 /* NewOrderViewController.swift */,
 				FD370D3D220B155A00780DDC /* CheckoutViewController.swift */,
 				FDBC221D2211D4BF00733A5F /* CollectOrderViewController.swift */,

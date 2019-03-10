@@ -43,10 +43,15 @@ class HomeViewController: UIViewController, Storyboarded {
         navigationItem.hidesBackButton = true
         
         checkRecentOrder()
-        setPreviousOrderGesture()
         
-        timeLeftLabel.text? = "12:00"
-        closingTimeLabel.text = closingTimeLabel.text?.replacingOccurrences(of: "_TIME_", with: "10")
+        timeLeftLabel.text? = "12:00" // TODO: - get time left until order limit
+        closingTimeLabel.text = closingTimeLabel.text?.replacingOccurrences(of: "_TIME_", with: "10") // get fresh closing time
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        checkRecentOrder()
     }
  
     private func setPreviousOrderGesture() {
@@ -68,10 +73,11 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     private func checkRecentOrder() {
-        if let prevOrder = coordinator?.orderManager.getLastOrder(), prevOrder.isFull() {
+        if let prevOrder = coordinator?.orderManager?.getLastOrder() {
             self.previousOrder = prevOrder
             
             setPreviousOrderViews()
+            setPreviousOrderGesture()
             setMealLabels(order: prevOrder)
         }
     }
@@ -114,8 +120,6 @@ class HomeViewController: UIViewController, Storyboarded {
         }
     }
     @IBAction func reorderButton_touchUpInside(_ sender: Any) {
-        if let order = self.previousOrder {
-            coordinator?.viewPreviousOrders()
-        }
+        coordinator?.viewPreviousOrders()
     }
 }

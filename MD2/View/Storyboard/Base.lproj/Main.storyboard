@@ -19,19 +19,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Pc-TO-RXd" userLabel="Login Field Stack">
-                                <rect key="frame" x="16" y="352" width="343" height="108"/>
+                                <rect key="frame" x="16" y="323" width="343" height="166"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bath Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDU-dc-JoY">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yUI-Zn-kDV">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="p7h-jc-289"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="yes" textContentType="name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bath Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDU-dc-JoY">
+                                        <rect key="frame" x="0.0" y="58" width="343" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="9kU-xk-lqW"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="yes" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOh-Ro-MeU">
-                                        <rect key="frame" x="0.0" y="58" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="116" width="343" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="RIU-Vc-eGU"/>
                                         </constraints>
@@ -68,6 +77,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="BDU-dc-JoY" id="C3g-eC-QLl"/>
+                        <outlet property="nameTextField" destination="yUI-Zn-kDV" id="X1a-Kc-Mh1"/>
                         <outlet property="passwordTextField" destination="hOh-Ro-MeU" id="3Ie-e7-Cbf"/>
                         <outlet property="signInButton" destination="BDa-FU-nVT" id="P9I-1K-wX8"/>
                     </connections>

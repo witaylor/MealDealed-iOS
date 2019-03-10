@@ -41,7 +41,7 @@ class CheckoutViewController: UIViewController, Storyboarded {
     
     @IBAction func orderButton_touchUpInside(_ sender: Any) {
         let newOrder = Order(forCustomer: (coordinator?.userManager.getCurrentUser())!, withMealDeal: mealDeal)
-        coordinator?.orderManager.placeOrder(newOrder)
+        coordinator?.orderManager?.placeOrder(newOrder)
         showOrderPlacedAlert(forOrder: newOrder)
     }
     

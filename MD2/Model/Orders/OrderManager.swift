@@ -26,15 +26,6 @@ class OrderManager {
 
     
     func loadOrders(forUser user: User) {
-        // TODO: Load orders from database for specified user
-        
-        LOAD_TEST_ORDERS(user) // for now
-    }
-    
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    func LOAD_TEST_ORDERS(_ user: User) {
         db.collection("orders").whereField("customerUniId", isEqualTo: currentUser.uniUsername).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting order history: \(err)")
@@ -63,7 +54,6 @@ class OrderManager {
     }
     
     private func saveToFirebase(_ order: Order) {
-
         let orderID = "\(order.customer.uniUsername)\(order.dateOrdered)"
         
         db.collection("orders").document(orderID).setData([

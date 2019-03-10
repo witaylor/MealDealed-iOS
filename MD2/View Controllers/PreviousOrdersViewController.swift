@@ -18,13 +18,13 @@ class PreviousOrdersViewController: UITableViewController, Storyboarded {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coordinator?.orderManager.orderCount() ?? 0
+        return coordinator?.orderManager?.orderCount() ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrderTableViewCell", for: indexPath) as? PreviousOrderTableViewCell else { return UITableViewCell() }
         
-        let order = coordinator?.orderManager.order(forIndex: indexPath.item)
+        let order = coordinator?.orderManager?.order(forIndex: indexPath.item)
         cell.order = order
         cell.reorderFunction = coordinator?.checkout(withMeal:)
         
