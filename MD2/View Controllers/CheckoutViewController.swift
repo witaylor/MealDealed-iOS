@@ -17,13 +17,15 @@ class CheckoutViewController: UIViewController, Storyboarded {
     
     var mealDeal: MealDeal!
     
+    var allowReturn: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setOrderLabels()
         setOrderImages()
         
-        navigationItem.hidesBackButton       = true // prevent going back to order selection
+        navigationItem.hidesBackButton       = !allowReturn // prevent going back to order selection
         navigationItem.largeTitleDisplayMode = .always
     }
     
@@ -46,13 +48,13 @@ class CheckoutViewController: UIViewController, Storyboarded {
     }
     
     private func showOrderPlacedAlert(forOrder order: Order) {
-        let alert = UIAlertController(title: "Order Placed!", message: "Your order has been placed successfully.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Order Placed!", message: "Your order has been placed successfully.\n\nDon't forget a way to pay!💵\n(Card only)", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Return", style: .default, handler: { (action) in
             self.navigationController?.popToRootViewController(animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Collect Now", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Show Receipt", style: .default, handler: { (action) in
             self.coordinator?.collect(order: order)
         }))
         
@@ -60,7 +62,7 @@ class CheckoutViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func cancelButton_touchUpInside(_ sender: Any) {
-        let alert = createErrorAlert(title: "Are you sure?", message: "Are you sure you would like to canel your order? It will not be saved.")
+        let alert = createErrorAlert(title: "Are you sure?", message: "Are you sure you would like to canel your order? It will not be saved.", returnMessage: "Don't Cancel!")
         
         alert.addAction(UIAlertAction(title: "I'm Sure!", style: .destructive, handler: { (action) in
             self.navigationController?.popToRootViewController(animated: true)

@@ -62,12 +62,11 @@ class NewOrderViewController: UIViewController, Storyboarded {
         let mealDeal = DataManager.shared.getCurrentOrder()
         
         if mealDeal.isFull() { // has main, snack & drink
-            self.coordinator?.checkout(withMeal: mealDeal)
+            self.coordinator?.checkout(withMeal: mealDeal, allowReturn: false)
         } else {
             let errorMessage = "You must select a main, snack and a drink before going to checkout."
             showErrorAlert(title: "Something's Missing!", message: errorMessage)
         }
-        
     }
     
     

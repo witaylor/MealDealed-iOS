@@ -14,6 +14,7 @@ class OrderManager {
     private let db: Firestore
     private var orderList = [Order]()
     private var currentUser: User
+    private var ordersLoaded = false
     
     init(forUser user: User) {
         self.db = Firestore.firestore()
@@ -24,9 +25,18 @@ class OrderManager {
         self.currentUser = user
     }
 
+    func hasLoadedOrders() -> Bool {
+        return self.ordersLoaded
+    }
     
     func loadOrders(forUser user: User) {
-        db.collection("orders").whereField("customerUniId", isEqualTo: currentUser.uniUsername).getDocuments() { (querySnapshot, err) in
+        loadFromCollection("orders", readyToCollect: false)
+        loadFromCollection("Collected", readyToCollect: false)
+        loadFromCollection("ReadyToCollect", readyToCollect: true)
+    }
+    
+    private func loadFromCollection(_ reference: String, readyToCollect: Bool) {
+        db.collection(reference).whereField("customerUniId", isEqualTo: currentUser.uniUsername).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting order history: \(err)")
             } else {
@@ -34,10 +44,12 @@ class OrderManager {
                     print("\(document.documentID) => \(document.data())")
                     
                     let data = document.data()
-                    let order = Order(fromFirebaseData: data, customer: self.currentUser)
+                    
+                    let order = Order(fromFirebaseData: data, customer: self.currentUser, orderReadyToCollect: readyToCollect)
                     self.orderList.append(order)
                 }
             }
+            self.ordersLoaded = true
         }
     }
     
@@ -49,20 +61,21 @@ class OrderManager {
     
     func placeOrder(_ order: Order) {
         orderList.append(order) // append to local list
-        
         saveToFirebase(order)
     }
     
     private func saveToFirebase(_ order: Order) {
         let orderID = "\(order.customer.uniUsername)\(order.dateOrdered)"
         
-        db.collection("orders").document(orderID).setData([
+        let readyCollect = order.readyForCollection
+        let collectionReference = readyCollect ? "ReadyToCollect" : "orders"
+        
+        db.collection(collectionReference).document(orderID).setData([
             "customerName": order.customer.name,
             "customerUniId": order.customer.uniUsername,
             "main": order.getMealDeal().main!.name,
             "snack": order.getMealDeal().snack!.name,
-            "drink":order.getMealDeal().drink!.name,
-            "collected":order.collected
+            "drink":order.getMealDeal().drink!.name
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -78,5 +91,5 @@ class OrderManager {
     
     func order(forIndex index: Int) -> Order {
         return orderList[index]
-    }    
+    }
 }

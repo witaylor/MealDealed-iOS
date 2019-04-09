@@ -12,11 +12,7 @@ import FirebaseAuth
 class UserManager {
     
     private let firebaseAuth = Auth.auth()
-    private var currentUser: User? { // nil if none signed in
-        didSet {
-            print(" >> set current user.")
-        }
-    }
+    private var currentUser: User? // nil if none signed in
         
     var startFunction: (() -> ())?
     
@@ -27,14 +23,7 @@ class UserManager {
     }
     
     private func startApp() {
-        print(" >> STARTING!")
-        if let start = startFunction {
-            start()
-            print(" >> start success.")
-        }
-        else {
-            print(" >> start failed.")
-        }
+        if let start = startFunction { start() }
     }
     
     func getCurrentUser() -> User? {
@@ -52,11 +41,9 @@ class UserManager {
             changeRequest.displayName = name
             changeRequest.commitChanges { (error) in
                 if let error = error {
-                    print("\n\n >> COULD NOT SET THE DISPLAY NAME!")
-                    print(error, terminator: "\n\n")
+                    print("Error changing user display name.")
+                    print(error)
                 } else {
-                    print("\n\n >> DISPLAY NAME CHANGED!\n\n")
-                    
                     self.currentUser = User(name: (self.firebaseAuth.currentUser?.displayName)!, withEmail: (self.firebaseAuth.currentUser?.email)!)
                     self.startApp()
                 }
@@ -73,17 +60,14 @@ class UserManager {
                     switch errCode {
                     case .wrongPassword:
                         print("DEVELOPER: Incorrect password.")
+                    case .userNotFound:
+                        strongSelf.registerUser(name: name, withEmail: email, password: password)
                     default:
                         print("DEVELOPER: Create User Error: \(error!)")
                     }
                 }
             }
-            
-            if error?.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                print("\n\n >> REGISTERING NEW USER WITH EMAIL -- \(email)")
-                strongSelf.registerUser(name: name, withEmail: email, password: password)
-            }
-            
+        
             if error == nil {
                 print("\n\n")
                 print("SIGNED IN AS \(String(describing: user?.user.email))")

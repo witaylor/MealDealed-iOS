@@ -21,8 +21,8 @@ struct MealDeal {
 struct Order {
     private var mealDeal: MealDeal = MealDeal()
     
-    private(set) var dateOrdered = Date() 
-    var collected   = false
+    private(set) var dateOrdered = Date()
+    var readyForCollection = false // set back to false when collected
     
     var customer: User
     private(set) var qrCode: UIImage? // from string: customerUuid + dateOrdered
@@ -39,11 +39,10 @@ struct Order {
         self.qrCode = QRCode.generate(from: "\(customer.uniUsername)\(dateOrdered)")
     }
     
-    init(fromFirebaseData data: [String: Any], customer: User) {
-        let mainName  = data["main"] as! String
-        let snackName  = data["snack"] as! String
-        let drinkName  = data["drink"] as! String
-        let collected = data["collected"] as! Bool
+    init(fromFirebaseData data: [String: Any], customer: User, orderReadyToCollect: Bool) {
+        let mainName  = data["main"]  as! String
+        let snackName = data["snack"] as! String
+        let drinkName = data["drink"] as! String
         
         self.customer = customer
         
@@ -51,7 +50,8 @@ struct Order {
         self.addToOrder(item: FoodItem(name: snackName, catagory: .Snack, subCatagory: nil))
         self.addToOrder(item: FoodItem(name: drinkName, catagory: .Drink, subCatagory: nil))
         
-        self.collected = collected
+        self.readyForCollection = orderReadyToCollect
+        self.qrCode = QRCode.generate(from: "\(customer.uniUsername)\(dateOrdered)")
     }
     
     mutating func addToOrder(item: FoodItem) {
@@ -61,9 +61,9 @@ struct Order {
     }
     
     mutating func removeFromOrder(_ catagory: FoodCatagory) {
-        if catagory == .Main  { self.mealDeal.snack = nil }
+        if catagory == .Main  { self.mealDeal.main = nil }
         if catagory == .Snack { self.mealDeal.snack = nil }
-        if catagory == .Drink { self.mealDeal.snack = nil }
+        if catagory == .Drink { self.mealDeal.drink = nil }
     }
     
     func getItem(inCatagory catagory: FoodCatagory) -> FoodItem? {
@@ -88,5 +88,4 @@ struct Order {
     func getMealDeal() -> MealDeal {
         return self.mealDeal
     }
-    
 }

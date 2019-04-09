@@ -11,17 +11,22 @@ import UIKit
 extension UIViewController {
     
     func showErrorAlert(title: String, message: String) {
-        let alert = createErrorAlert(title: title, message: message)
+        let alert = createErrorAlert(title: title, message: message, returnMessage: "Return")
         present(alert, animated: true, completion: nil)
     }
     
-    func createErrorAlert(title: String, message: String) -> UIAlertController {
+    func showErrorAlert(title: String, message: String, returnMessage: String) {
+        let alert = createErrorAlert(title: title, message: message, returnMessage: returnMessage)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func createErrorAlert(title: String, message: String, returnMessage: String) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Return", style: .cancel)
+        let cancelAction = UIAlertAction(title: returnMessage, style: .cancel)
         alert.addAction(cancelAction)
         
         return alert
     }
-    
 }
+

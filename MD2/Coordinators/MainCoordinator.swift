@@ -14,12 +14,15 @@ class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     // Shared Managers
-    var userManager : UserManager
+    var connection: Connection
+    var userManager: UserManager
     var orderManager: OrderManager?
     
     private var initialScreen = true
     
     init(navController: UINavigationController) {
+        self.connection = Connection()
+        
         self.userManager = UserManager()
         DataManager.shared.loadItems() // begin loading items ASAP
         
@@ -42,39 +45,34 @@ class MainCoordinator: Coordinator {
         // if none && signed in :: go to previous orders.
         // if none && not signed in :: go to login & display error "need internet connection"
         
-        if userManager.getCurrentUser() != nil {
-            print(" >> GOING TO HOMEPAGE")
-            
-            self.orderManager = OrderManager(forUser: userManager.getCurrentUser()!)
-            self.orderManager?.loadOrders(forUser: userManager.getCurrentUser()!)
-            
-            navigationController = UINavigationController(rootViewController: HomeViewController.instantiate())
-            setupNavBar()
-            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-            appdelegate.window!.rootViewController = navigationController
-            
-            start(login: false, animated: !initialScreen)
-        } else {            
-            start(login: true, animated: false)
-        }
-        
-        initialScreen = false
-    }
-    
-    func start(login: Bool, animated: Bool) {
-        if login {
-            self.login(animated: animated)
-        } else {
+        if self.connection.connected() { // if connected
+            // Go to homepage
             let vc = HomeViewController.instantiate()
             vc.coordinator = self
-            navigationController.pushViewController(vc, animated: animated)
+            navigationController.pushViewController(vc, animated: false)
+        
+            // check if user signed in
+            let currentUser = userManager.getCurrentUser()
+            
+            // if no user, show login
+            if currentUser == nil {
+                login()
+            } else {
+                // User is signed in - get all orders
+                self.orderManager = OrderManager(forUser: userManager.getCurrentUser()!)
+                self.orderManager?.loadOrders(forUser: userManager.getCurrentUser()!)
+            }
+            
+            initialScreen = false
+        } else {
+            viewPreviousOrders()
         }
     }
     
-    private func login(animated: Bool) {
+    private func login() {
         let vc = LoginViewController.instantiate()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: animated)
+        navigationController.pushViewController(vc, animated: false)
     }
     
     // MARK: - Navigation Functions
@@ -103,9 +101,14 @@ class MainCoordinator: Coordinator {
     }
     
     func checkout(withMeal meal: MealDeal) {
+        self.checkout(withMeal: meal, allowReturn: true)
+    }
+    
+    func checkout(withMeal meal: MealDeal, allowReturn: Bool) {
         let vc = CheckoutViewController.instantiate()
         vc.coordinator = self
         vc.mealDeal = meal
+        vc.allowReturn = allowReturn
         navigationController.pushViewController(vc, animated: true)
     }
     

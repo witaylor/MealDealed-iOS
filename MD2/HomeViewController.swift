@@ -34,6 +34,8 @@ class HomeViewController: UIViewController, Storyboarded {
     @IBOutlet var timeLeftLabel: UILabel!
     @IBOutlet var closingTimeLabel: UILabel!
     
+    private var timer: CountdownTimer?
+    
     
     private var previousOrder: Order? // nil if user doesn't have a recent order
     
@@ -43,6 +45,7 @@ class HomeViewController: UIViewController, Storyboarded {
         navigationItem.hidesBackButton = true
         
         checkRecentOrder()
+        setTimer()
         
         timeLeftLabel.text? = "12:00" // TODO: - get time left until order limit
         closingTimeLabel.text = closingTimeLabel.text?.replacingOccurrences(of: "_TIME_", with: "10") // get fresh closing time
@@ -52,6 +55,12 @@ class HomeViewController: UIViewController, Storyboarded {
         super.viewDidAppear(animated)
         
         checkRecentOrder()
+        setTimer()
+    }
+    
+    private func setTimer() {
+        timeLeftLabel.font = UIFont.monospacedDigitSystemFont(ofSize: timeLeftLabel.font.pointSize, weight: .regular)
+        self.timer = CountdownTimer(label: timeLeftLabel)
     }
  
     private func setPreviousOrderGesture() {
@@ -73,6 +82,18 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     private func checkRecentOrder() {
+        if let loaded = coordinator?.orderManager?.hasLoadedOrders(), loaded {
+            // orders have finished loading
+            loadRecentOrder()
+        } else {
+            // wait .5 seconds and try again
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.checkRecentOrder()
+            }
+        }
+    }
+    
+    private func loadRecentOrder() {
         if let prevOrder = coordinator?.orderManager?.getLastOrder() {
             self.previousOrder = prevOrder
             
@@ -83,7 +104,10 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     private func setPreviousOrderViews() {
-        enableButton(collectOrderButton)
+        if (previousOrder?.readyForCollection)! {
+            enableButton(collectOrderButton)
+        }
+//        enableButton(collectOrderButton)
         enableButton(reorderButton)
         
         noRecentOrderLabel.isHidden = true    // hide label
@@ -120,6 +144,7 @@ class HomeViewController: UIViewController, Storyboarded {
         }
     }
     @IBAction func reorderButton_touchUpInside(_ sender: Any) {
+        // if going from home then the device is connected
         coordinator?.viewPreviousOrders()
     }
 }

@@ -18,6 +18,8 @@ class CollectOrderViewController: UIViewController, Storyboarded {
     @IBOutlet private var snackLabel: UILabel!
     @IBOutlet private var drinkLabel: UILabel!
     
+    @IBOutlet var collectionDateLabel: UILabel!
+    
     private var originalBrightness = CGFloat(0) // brightness of screen when view is loaded
     
     var orderToCollect: Order!
@@ -29,6 +31,8 @@ class CollectOrderViewController: UIViewController, Storyboarded {
         originalBrightness = UIScreen.main.brightness
         UIScreen.main.brightness = 1
         
+        navigationItem.hidesBackButton = true
+        
         self.title = "Collect"
         navigationItem.largeTitleDisplayMode = .always
         
@@ -39,6 +43,13 @@ class CollectOrderViewController: UIViewController, Storyboarded {
         mainLabel.text  = orderToCollect.getItem(inCatagory: .Main)?.name
         snackLabel.text = orderToCollect.getItem(inCatagory: .Snack)?.name
         drinkLabel.text = orderToCollect.getItem(inCatagory: .Drink)?.name
+        
+        let orderDate = orderToCollect.dateOrdered
+        
+        let collectDate = Calendar.current.date(byAdding: .day, value: 1, to: orderDate)
+        let dateComp = Calendar.current.dateComponents(in: .current, from: collectDate!)
+        
+        collectionDateLabel.text = "Collect on \(dateComp.day!)/\(dateComp.month!)/\(dateComp.year!)"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

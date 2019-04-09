@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, Storyboarded, UITextFieldDelegate {
         super.viewDidLoad()
 
         self.title = "Login"
+        self.navigationItem.hidesBackButton = true
         
         emailTextField.tag = 0
         emailTextField.delegate = self

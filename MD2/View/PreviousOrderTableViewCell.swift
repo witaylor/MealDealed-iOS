@@ -14,6 +14,7 @@ class PreviousOrderTableViewCell: UITableViewCell {
     
     @IBOutlet var orderDateLabel: UILabel!
     @IBOutlet var reorderButton: RoundedButton!
+    @IBOutlet var collectButton: RoundedButton!
     
     @IBOutlet var itemImageViews: [UIImageView]!
     @IBOutlet var itemLabels: [UILabel]!
@@ -24,12 +25,12 @@ class PreviousOrderTableViewCell: UITableViewCell {
         }
     }
     var reorderFunction: ((MealDeal) -> ())?
+    var collectFunction: ((Order) -> ())?
    
     private func setupCell() {
         let date = order.dateOrdered
         let dateString = date.description
         let formattedDateString = convertDateFormater(dateString)
-        
         
         orderDateLabel.text = "\(formattedDateString)"
         
@@ -42,6 +43,10 @@ class PreviousOrderTableViewCell: UITableViewCell {
             }
         }
         
+        if !order.readyForCollection {
+            collectButton.backgroundColor = collectButton.backgroundColor?.withAlphaComponent(0.5)
+            collectButton.isEnabled = false
+        }
     }
     
     func convertDateFormater(_ date: String) -> String {
@@ -52,17 +57,18 @@ class PreviousOrderTableViewCell: UITableViewCell {
         return dateFormatter.string(from: date!)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    override func setSelected(_ selected: Bool, animated: Bool) {}
     
     // MARK: - @IBActions
-    
     @IBAction func reorderButton_touchUpInside(_ sender: Any) {
         if let reorder = self.reorderFunction {
             reorder(order.getMealDeal())
+        }
+    }
+    
+    @IBAction func collectionButton_touchUpInside(_ sender: Any) {
+        if let collect = self.collectFunction {
+            collect(order)
         }
     }
 }

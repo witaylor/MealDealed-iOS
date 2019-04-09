@@ -27,7 +27,6 @@ struct FoodItem {
 struct DataItem: Codable {
     var name: String
     var catagory: String
-//    var subCatagory: String // unused for now
     
     init(name: String, catagory: String) {
         self.name = name
@@ -37,7 +36,6 @@ struct DataItem: Codable {
     init(name: String, catagory: FoodCatagory) {
         self.name = name
         self.catagory = catagory.rawValue // M || S || D
-//        self.subCatagory = ""
     }
     
     func toFoodItem() -> FoodItem {

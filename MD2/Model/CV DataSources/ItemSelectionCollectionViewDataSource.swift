@@ -42,12 +42,15 @@ class ItemSelectionCollectionViewDataSource: NSObject, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedCell = collectionView.cellForItem(at: indexPath) as? ItemCollectionViewCell else { return }
         
-        selectedCell.backgroundColor = UIColor(red: 75/255, green: 242/255, blue: 130/255, alpha: 1)
+        selectedCell.selected(true)
         DataManager.shared.addToMealDeal(selectedCell.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        collectionView.cellForItem(at: indexPath)?.backgroundColor = .clear
+        guard let deselectedCell = collectionView.cellForItem(at: indexPath) as? ItemCollectionViewCell else { return }
+        
+        deselectedCell.selected(false)
+        DataManager.shared.removeFromMealDeal(deselectedCell.item.catagory)
     }
 }
 
@@ -56,7 +59,7 @@ extension ItemSelectionCollectionViewDataSource: UICollectionViewDelegate { }
 extension ItemSelectionCollectionViewDataSource: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width  = (collectionView.frame.width / 3)
+        let width  = (collectionView.frame.width / 3)-4
         return CGSize(width: width, height: 180)
     }
 }

@@ -31,20 +31,38 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     private func setupCell() {
         self.heightAnchor.constraint(equalToConstant: 175)
+        self.backgroundView = UIView()
+        self.backgroundView?.backgroundColor = .white
+        self.backgroundView?.layer.cornerRadius = 10
+        
+        self.backgroundView?.layer.borderWidth = 1
+        self.backgroundView?.layer.borderColor = UIColor.black.cgColor
+        
         
         self.addSubview(itemImageView)
         setupImageView()
         
         self.addSubview(itemLabel)
         setupLabel()
+        
+        itemImageView.layer.cornerRadius = 10
+        itemImageView.clipsToBounds = true
     }
     
     private func setCellContent() {
         itemLabel.text = item.name
         
-        if item.catagory == .Main  { itemImageView.image = UIImage(named: "Main")  }
-        if item.catagory == .Snack { itemImageView.image = UIImage(named: "Snack") }
-        if item.catagory == .Drink { itemImageView.image = UIImage(named: "Drink") }
+        if item.catagory == .Main  { itemImageView.image = UIImage(named: "Sandwich")  }
+        if item.catagory == .Snack { itemImageView.image = UIImage(named: "Crisps") }
+        if item.catagory == .Drink { itemImageView.image = UIImage(named: "Cola") }
+    }
+    
+    func selected(_ isSelected: Bool) {
+        if isSelected {
+            self.backgroundView?.backgroundColor = UIColor(red: 75/255, green: 242/255, blue: 130/255, alpha: 1)
+        } else {
+            self.backgroundView?.backgroundColor = .white
+        }
     }
     
     // MARK: - Item ImageView

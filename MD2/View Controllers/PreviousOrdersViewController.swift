@@ -24,9 +24,12 @@ class PreviousOrdersViewController: UITableViewController, Storyboarded {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrderTableViewCell", for: indexPath) as? PreviousOrderTableViewCell else { return UITableViewCell() }
         
-        let order = coordinator?.orderManager?.order(forIndex: indexPath.item)
+        let indexOfOrder = (coordinator?.orderManager?.orderCount())! - indexPath.item - 1
+        let order = coordinator?.orderManager?.order(forIndex: indexOfOrder)
         cell.order = order
+        
         cell.reorderFunction = coordinator?.checkout(withMeal:)
+        cell.collectFunction = coordinator?.collect(order:)
         
         return cell
     }

@@ -27,6 +27,8 @@
 		FD65E0B62204D76D00004B05 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD65E0B52204D76D00004B05 /* HomeViewController.swift */; };
 		FD68C2A522255D70009BBB73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD68C2A422255D6F009BBB73 /* GoogleService-Info.plist */; };
 		FD6E3F5E221AFE9E003C1A60 /* Orders.json in Resources */ = {isa = PBXBuildFile; fileRef = FD6E3F5C221AFE9E003C1A60 /* Orders.json */; };
+		FD8405AC223A883000F6FB62 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8405AB223A883000F6FB62 /* Connection.swift */; };
+		FD850A08223AA64D0068CE65 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD850A07223AA64D0068CE65 /* CountdownTimer.swift */; };
 		FDBC22182211D07100733A5F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC22172211D07100733A5F /* Coordinator.swift */; };
 		FDBC221A2211D0AC00733A5F /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC22192211D0AC00733A5F /* Storyboarded.swift */; };
 		FDBC221C2211D19E00733A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBC221B2211D19E00733A5F /* MainCoordinator.swift */; };
@@ -67,6 +69,8 @@
 		FD65E0B52204D76D00004B05 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		FD68C2A422255D6F009BBB73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD6E3F5C221AFE9E003C1A60 /* Orders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Orders.json; sourceTree = "<group>"; };
+		FD8405AB223A883000F6FB62 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		FD850A07223AA64D0068CE65 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		FDBC22172211D07100733A5F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FDBC22192211D0AC00733A5F /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		FDBC221B2211D19E00733A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -142,7 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				FD65E0942204B92A00004B05 /* AppDelegate.swift */,
+				FD8405AB223A883000F6FB62 /* Connection.swift */,
 				FDC4699D221BE59400847D3A /* QRCode.swift */,
+				FD850A07223AA64D0068CE65 /* CountdownTimer.swift */,
 				FDCE0B58220B8AD100FA30E7 /* VCExtension.swift */,
 				FDBC22152211D05A00733A5F /* Coordinators */,
 				FD65E0B42204D74F00004B05 /* View Controllers */,
@@ -291,6 +297,7 @@
 				TargetAttributes = {
 					FD65E0902204B92A00004B05 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -409,8 +416,10 @@
 				FD65E0AF2204C77000004B05 /* FoodItem.swift in Sources */,
 				FDCE0B59220B8AD100FA30E7 /* VCExtension.swift in Sources */,
 				FDF9A02522082E7500BF933F /* ItemSelectionCollectionViewDataSource.swift in Sources */,
+				FD850A08223AA64D0068CE65 /* CountdownTimer.swift in Sources */,
 				FD65E0952204B92A00004B05 /* AppDelegate.swift in Sources */,
 				FD36D1C52207A3D200848B2B /* ItemPageCollectionViewDataSource.swift in Sources */,
+				FD8405AC223A883000F6FB62 /* Connection.swift in Sources */,
 				FDC4699E221BE59400847D3A /* QRCode.swift in Sources */,
 				FD370D3E220B155A00780DDC /* CheckoutViewController.swift in Sources */,
 				FD65E0B32204D3C300004B05 /* UserManager.swift in Sources */,
@@ -573,7 +582,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.willtaylor.MealDealed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -592,7 +601,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.willtaylor.MealDealed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
